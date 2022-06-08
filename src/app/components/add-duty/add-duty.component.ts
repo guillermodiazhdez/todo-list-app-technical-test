@@ -9,21 +9,19 @@ import { DutiesService } from 'src/app/services/duties.service';
   styleUrls: ['./add-duty.component.scss'],
 })
 export class AddDutyComponent {
-  newDuty: Duty = { id: '', name: '' };
   public constructor(private dutiesService: DutiesService) {}
 
   addDutyForm = new FormGroup({
-    id: new FormControl('', Validators.required),
     name: new FormControl('', Validators.required),
   });
 
   onSubmit() {
-    if (this.addDutyForm.value.id && this.addDutyForm.value.name) {
-      this.newDuty = {
-        id: this.addDutyForm.value.id,
+    if (this.addDutyForm.value.name) {
+      const newDuty: Duty = {
+        id: '',
         name: this.addDutyForm.value.name,
       };
-      this.dutiesService.addDuty(this.newDuty);
+      this.dutiesService.addDuty(newDuty);
       this.addDutyForm.reset();
     }
   }

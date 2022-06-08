@@ -17,7 +17,7 @@ export class DutiesListComponent implements OnInit, OnDestroy {
   public constructor(private dutiesService: DutiesService) {}
 
   public ngOnInit() {
-    this.duties = this.dutiesService.getDuties();
+    this.dutiesService.getDuties();
     this.dutiesSub = this.dutiesService
       .getDutyUpdateListener()
       .subscribe((duties: Duty[]) => {
