@@ -1,0 +1,11 @@
+<div *ngIf="duties.length > 0">
+  <div *ngFor="let duty of duties">
+    {{ duty.id }}
+
+    {{ duty.name }}
+    <button>Edit</button>
+    <button>Delete</button>
+  </div>
+</div>
+
+<p *ngIf="duties.length <= 0">No duties left</p>

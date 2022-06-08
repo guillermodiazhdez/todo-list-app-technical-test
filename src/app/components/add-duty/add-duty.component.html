@@ -1,0 +1,21 @@
+<form [formGroup]="addDutyForm" (ngSubmit)="onSubmit()" class="add-duty-form">
+  <label>
+    Id
+    <input
+      type="text"
+      formControlName="id"
+      class="add-duty-input"
+      placeholder="id"
+    />
+  </label>
+  <label>
+    Name
+    <input
+      type="text"
+      formControlName="name"
+      class="add-duty-input"
+      placeholder="name"
+    />
+  </label>
+  <button type="submit" [disabled]="!addDutyForm.valid">Submit</button>
+</form>
