@@ -23,7 +23,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use((req, res, next) => {
-  // set headers to avoid CORS issue (different server ports)
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(
     "Access-Control-Allow-Headers",
@@ -31,10 +30,8 @@ app.use((req, res, next) => {
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE, OPTIONS"
+    "GET, POST, PATCH, PUT, DELETE, OPTIONS"
   );
-
-  // continue to the next middleware
   next();
 });
 
@@ -43,9 +40,22 @@ app.post("/api/duties", (req, res, next) => {
     name: req.body.name,
   });
   // inserts a new entry with that data and auto generated id into the database
-  duty.save();
-  res.status(201).json({
-    message: "Duty added correctly!",
+  duty.save().then((addedDuty) => {
+    res.status(201).json({
+      message: "Duty added correctly!",
+      dutyId: addedDuty._id,
+    });
+  });
+});
+
+app.put("/api/duties/:id", (req, res, next) => {
+  const duty = new Duty({
+    _id: req.body.id,
+    name: req.body.name,
+  });
+  Duty.updateOne({ _id: req.params.id }, duty).then((result) => {
+    console.log(result);
+    res.status(200).json({ message: "success" });
   });
 });
 
@@ -54,6 +64,16 @@ app.get("/api/duties", (req, res, next) => {
     res.status(200).json({
       message: "Duties fetched!",
       duties: documents,
+    });
+  });
+});
+
+// dynamic id to delete each duty
+app.delete("/api/duties/:id", (req, res, next) => {
+  Duty.deleteOne({ _id: req.params.id }).then((result) => {
+    console.log(result);
+    res.status(200).json({
+      message: "Post deleted",
     });
   });
 });

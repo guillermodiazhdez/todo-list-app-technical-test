@@ -3,9 +3,14 @@
     {{ duty.id }}
 
     {{ duty.name }}
-    <button>Edit</button>
-    <button>Delete</button>
+    <button (click)="onEdit(duty.id)">Edit</button>
+    <button (click)="onDelete(duty.id)">Delete</button>
   </div>
 </div>
+<span>Tarea a editar es: </span>
+<form (ngSubmit)="YouMethod()">
+  <input [(ngModel)]="dutyName" name="dutyName" [disabled]="toggleButton" />
+  <button type="submit" [disabled]="toggleButton">Submit</button>
+</form>
 
 <p *ngIf="duties.length <= 0">No duties left</p>
