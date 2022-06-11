@@ -1,12 +1,19 @@
 <form [formGroup]="addDutyForm" (ngSubmit)="onSubmit()" class="add-duty-form">
-  <label>
-    Name
-    <input
-      type="text"
-      formControlName="name"
-      class="add-duty-input"
-      placeholder="name"
-    />
-  </label>
-  <button type="submit" [disabled]="!addDutyForm.valid">Submit</button>
+  <input
+    type="text"
+    formControlName="name"
+    class="add-duty-input"
+    placeholder="Add your new duty"
+  />
+  <button
+    type="submit"
+    [disabled]="!addDutyForm.valid"
+    class="add-duty-submit"
+    [class.add-duty-submit--valid]="addDutyForm.valid"
+  >
+    +
+  </button>
+  <div class="add-duty-error" *ngIf="!addDutyForm.valid">
+    Duty length must be at least 5 characters
+  </div>
 </form>

@@ -1,27 +1,51 @@
-# TodoListApp
+## About The Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.0.
+A simple to-do app where user can:
 
-## Development server
+- Read tasks from database (MongoDB)
+- Add new tasks (duties) to the database
+- Edit tasks
+- Delete tasks
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+### Built With
 
-## Code scaffolding
+- [MongoDB](https://www.mongodb.com/)
+- [Express.js](https://expressjs.com/)
+- [Angular](https://angular.io/)
+- [Node](https://nodejs.org/)
+- [Mongoose](https://mongoosejs.com/)
+- [Nodemon](https://nodemon.io/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Getting Started
 
-## Build
+1. Clone the repo
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+   ```sh
+   git clone https://github.com/your_username_/Project-Name.git
+   ```
 
-## Running unit tests
+2. Install NPM packages:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+   ```sh
+   npm install
+   ```
 
-## Running end-to-end tests
+3. Run angular app:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+   ```sh
+   npm run ng start;
+   ```
 
-## Further help
+Alternatively if Angular CLI is installed in your computer, your could also hit:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    ```sh
+
+ng serve -o;
+
+````
+
+4. Open a second terminal and run _Nodemoon_ (nodemon is a tool that helps develop Node.js based applications by automatically restarting the node application when file changes in the directory are detected.):
+
+```sh
+npm run start:server
+````

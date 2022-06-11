@@ -1,6 +1,6 @@
 :host {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     background-color: #35404a;
     height: 5rem;
     align-items: center;
@@ -25,5 +25,5 @@
 }
 
 .header-item > .header-item--active {
-    color:red;
+    color:green;
 }
