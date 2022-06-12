@@ -38,6 +38,6 @@ A simple to-do app where user can:
 
 4. Open a second terminal and run _Nodemoon_ (nodemon is a tool that helps develop Node.js based applications by automatically restarting the node application when file changes in the directory are detected.):
 
-```sh
-npm run start:server
-```
+   ```sh
+   npm run start:server
+   ```
