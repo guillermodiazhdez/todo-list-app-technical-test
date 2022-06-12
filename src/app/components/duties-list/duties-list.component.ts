@@ -12,13 +12,13 @@ import { DutiesService } from 'src/app/services/duties.service';
   styleUrls: ['./duties-list.component.scss'],
 })
 export class DutiesListComponent implements OnInit, OnDestroy {
-  duties: Duty[] = [];
-  dutyName: string;
-  dutyId: string;
+  public duties: Duty[] = [];
+  public dutyName: string;
+  public dutyId: string;
 
   public toggleButton: boolean = true;
 
-  private dutiesSub: Subscription = new Subscription();
+  public dutiesSub: Subscription = new Subscription();
 
   public constructor(private dutiesService: DutiesService) {}
 
@@ -31,25 +31,23 @@ export class DutiesListComponent implements OnInit, OnDestroy {
       });
   }
 
-  onDelete(dutyId: string) {
+  public onDelete(dutyId: string) {
     this.dutiesService.deleteDuty(dutyId);
   }
 
-  onEdit(dutyId: string) {
+  public onEdit(dutyId: string) {
     this.dutyId = dutyId;
     this.dutyName = this.duties.find((duty) => duty.id === dutyId)?.name;
     this.toggleButton = false;
-    console.log(this.dutyName);
   }
 
-  YouMethod() {
-    console.log(this.dutyName);
-    console.log('entramos');
-
+  public updateDuty() {
     this.dutiesService.updateDuty(this.dutyId, this.dutyName);
+    this.dutyName = null;
+    this.toggleButton = true;
   }
 
-  ngOnDestroy(): void {
+  public ngOnDestroy(): void {
     this.dutiesSub.unsubscribe();
   }
 }

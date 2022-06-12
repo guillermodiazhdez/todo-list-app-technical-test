@@ -11,11 +11,11 @@ import { DutiesService } from 'src/app/services/duties.service';
 export class AddDutyComponent {
   public constructor(private dutiesService: DutiesService) {}
 
-  addDutyForm = new FormGroup({
+  public addDutyForm = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(5)]),
   });
 
-  onSubmit() {
+  public onSubmit() {
     if (this.addDutyForm.value.name) {
       const newDuty: Duty = {
         id: '',

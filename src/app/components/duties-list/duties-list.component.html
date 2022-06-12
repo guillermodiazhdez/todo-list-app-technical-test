@@ -1,16 +1,34 @@
-<div *ngIf="duties.length > 0">
-  <div *ngFor="let duty of duties">
-    {{ duty.id }}
-
+<div *ngIf="duties.length > 0" class="duties-lists-container">
+  <div *ngFor="let duty of duties" class="duties-lists-duty-container">
     {{ duty.name }}
-    <button (click)="onEdit(duty.id)">Edit</button>
-    <button (click)="onDelete(duty.id)">Delete</button>
+    <div class="duties-lists-buttons-container">
+      <button class="duties-list-button" (click)="onEdit(duty.id)">✏️</button>
+      <button class="duties-list-button" (click)="onDelete(duty.id)">❌</button>
+    </div>
   </div>
 </div>
-<span>Tarea a editar es: </span>
-<form (ngSubmit)="YouMethod()">
-  <input [(ngModel)]="dutyName" name="dutyName" [disabled]="toggleButton" />
-  <button type="submit" [disabled]="toggleButton">Edit</button>
-</form>
+<div class="duties-list-update-hint">
+  💡 Click on the edit icon ✏️ in case you want to update a duty:
+</div>
+
+<div class="duties-lists-update-duty-container">
+  <span class="duties-list-update-duty">Duty to be updated: </span>
+  <form (ngSubmit)="updateDuty()">
+    <input
+      [(ngModel)]="dutyName"
+      name="dutyName"
+      [disabled]="toggleButton"
+      class="duties-list-update-input"
+    />
+    <button
+      class="duties-list-update-button"
+      type="submit"
+      [disabled]="toggleButton"
+      [class.update-duty--valid]="!toggleButton"
+    >
+      Edit
+    </button>
+  </form>
+</div>
 
 <p *ngIf="duties.length <= 0">No duties left</p>

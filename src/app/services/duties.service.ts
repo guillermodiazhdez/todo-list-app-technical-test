@@ -11,7 +11,7 @@ export class DutiesService {
   constructor(private httpClient: HttpClient) {}
 
   /* Return a new array with old and new duties objects */
-  getDuties() {
+  public getDuties() {
     this.httpClient
       // any as id is wrong, it is actually _id and would not match with the interface
       .get<{ message: string; duties: any }>('http://localhost:3000/api/duties')
@@ -37,7 +37,7 @@ export class DutiesService {
     return this.dutiesUpdated.asObservable();
   }
 
-  addDuty(duty: Duty) {
+  public addDuty(duty: Duty) {
     this.httpClient
       .post<{ message: string; dutyId: string }>(
         'http://localhost:3000/api/duties',
@@ -54,17 +54,17 @@ export class DutiesService {
       });
   }
 
-  updateDuty(id: string, name: string) {
+  public updateDuty(id: string, name: string) {
     const duty: Duty = {
       id: id,
       name: name,
     };
     this.httpClient
       .put('http://localhost:3000/api/duties/' + id, duty)
-      .subscribe((response) => console.log(response));
+      .subscribe((response) => this.getDuties());
   }
 
-  deleteDuty(dutyId: string) {
+  public deleteDuty(dutyId: string) {
     this.httpClient
       .delete('http://localhost:3000/api/duties/' + dutyId)
       .subscribe(() => {
